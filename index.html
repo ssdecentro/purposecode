@@ -3,15 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Export Purpose Code Finder — Decentro Global</title>
-<meta name="description" content="Find your RBI-mandated Export Purpose Code in 30 seconds. Drop in your website URL — we'll tell you the exact code your bank needs for your international receipts to clear.">
+<title>Free Export Purpose Code Finder — Decentro Global</title>
+<meta name="description" content="Find your RBI-mandated Export Purpose Code in 30 seconds. Drop in your website URL — we'll classify your service and return the exact code your AD bank needs for your USD/EUR/GBP receipts to clear.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 /* ============================================
-   DECENTRO GLOBAL — EXPORT PURPOSE CODE FINDER
-   Brand gradient: #096ef2 → #3d9cf5 → #00d4ff
-   DM Serif Display (headlines) + Inter (body)
+   DECENTRO GLOBAL · EXPORT PURPOSE CODE FINDER
+   Layout language mirrors /global/iban-checker:
+   compact hero · tool-first · anatomy breakdown ·
+   education · coverage · FAQ · related tools · CTA
    ============================================ */
 
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -21,7 +22,8 @@
   --surface: #F1F5F9;
   --surface-2: #F8FAFC;
   --border: #E2E8F0;
-  --foreground: #1C2024;
+  --border-strong: #CBD5E1;
+  --foreground: #0F172A;
   --muted: #94A3B8;
   --subtle: #475569;
   --dark-text: #334155;
@@ -51,10 +53,11 @@ body {
 
 .container { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
 
-h1, h2, h3 { font-family: 'DM Serif Display', serif; font-weight: 400; line-height: 1.12; }
-h1 { font-size: clamp(40px, 5.5vw, 68px); letter-spacing: -0.02em; }
-h2 { font-size: clamp(30px, 3.8vw, 46px); letter-spacing: -0.01em; }
-h3 { font-size: clamp(20px, 2.2vw, 26px); }
+h1, h2, h3, h4 { font-family: 'DM Serif Display', serif; font-weight: 400; line-height: 1.14; }
+h1 { font-size: clamp(38px, 5vw, 60px); letter-spacing: -0.02em; }
+h2 { font-size: clamp(28px, 3.4vw, 40px); letter-spacing: -0.01em; }
+h3 { font-size: clamp(20px, 2vw, 24px); }
+h4 { font-size: 18px; }
 
 .gradient-text {
   background: var(--brand-gradient);
@@ -64,29 +67,31 @@ h3 { font-size: clamp(20px, 2.2vw, 26px); }
   font-style: italic;
 }
 
-.section-label {
+.eyebrow {
+  display: inline-block;
+  font-family: 'Inter', sans-serif;
   font-size: 11px;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 2.5px;
+  letter-spacing: 2.4px;
   color: var(--brand-blue);
-  margin-bottom: 16px;
+  margin-bottom: 14px;
 }
 
 /* ── Buttons ── */
 .btn {
   display: inline-flex; align-items: center; gap: 8px;
   font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 600;
-  padding: 14px 26px; border-radius: var(--radius); border: none;
+  padding: 13px 24px; border-radius: var(--radius); border: none;
   cursor: pointer; transition: all 0.2s ease; text-decoration: none;
   white-space: nowrap;
 }
 .btn-primary { background: #000; color: #fff; }
 .btn-primary:hover { background: #1a1a1a; transform: translateY(-1px); box-shadow: 0 6px 18px rgba(0,0,0,0.18); }
-.btn-primary:disabled { background: #475569; cursor: not-allowed; transform: none; }
-.btn-outline { background: transparent; color: var(--foreground); border: 1.5px solid var(--border); }
+.btn-primary:disabled { background: var(--muted); cursor: not-allowed; transform: none; box-shadow: none; }
+.btn-outline { background: transparent; color: var(--foreground); border: 1.5px solid var(--border-strong); }
 .btn-outline:hover { border-color: #000; background: var(--surface); }
-.btn-sm { padding: 10px 18px; font-size: 13px; }
+.btn-sm { padding: 9px 16px; font-size: 13px; }
 
 /* ── Nav ── */
 .nav {
@@ -98,7 +103,7 @@ h3 { font-size: clamp(20px, 2.2vw, 26px); }
   max-width: var(--max-w); margin: 0 auto; padding: 0 24px;
   height: 100%; display: flex; align-items: center; justify-content: space-between;
 }
-.nav-left { display: flex; align-items: center; gap: 40px; }
+.nav-left { display: flex; align-items: center; gap: 32px; }
 .nav-logo { display: flex; align-items: center; gap: 8px; text-decoration: none; }
 .nav-logo-mark {
   width: 28px; height: 28px; border-radius: 6px; background: #0092ff;
@@ -112,48 +117,52 @@ h3 { font-size: clamp(20px, 2.2vw, 26px); }
   border: 1px solid rgba(9,110,242,0.15);
   text-transform: uppercase; letter-spacing: 1px;
 }
-.nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
+.nav-links { display: flex; align-items: center; gap: 28px; list-style: none; }
 .nav-links a { font-size: 14px; font-weight: 500; color: var(--subtle); text-decoration: none; transition: color 0.2s; }
-.nav-links a:hover { color: var(--foreground); }
-.nav-actions { display: flex; align-items: center; gap: 12px; }
+.nav-links a:hover, .nav-links a.active { color: var(--foreground); }
+.nav-actions { display: flex; align-items: center; gap: 10px; }
 
-/* ── Hero ── */
-.hero { padding: 140px 0 64px; position: relative; overflow: hidden; }
+/* ── Breadcrumb ── */
+.breadcrumb {
+  padding: calc(var(--nav-h) + 20px) 0 12px;
+  font-size: 13px; color: var(--muted);
+}
+.breadcrumb a { color: var(--muted); text-decoration: none; }
+.breadcrumb a:hover { color: var(--foreground); }
+.breadcrumb .sep { margin: 0 8px; color: var(--border-strong); }
+.breadcrumb .current { color: var(--foreground); font-weight: 500; }
+
+/* ── Hero (compact, tool-first) ── */
+.hero {
+  padding: 24px 0 56px;
+  position: relative;
+  overflow: hidden;
+}
 .hero::before {
   content: ''; position: absolute; inset: 0;
   background:
-    linear-gradient(rgba(148,158,182,0.06) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(148,158,182,0.06) 1px, transparent 1px);
+    linear-gradient(rgba(148,158,182,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(148,158,182,0.05) 1px, transparent 1px);
   background-size: 52px 52px; pointer-events: none;
+  mask-image: linear-gradient(180deg, #000 0%, transparent 80%);
+  -webkit-mask-image: linear-gradient(180deg, #000 0%, transparent 80%);
 }
 .hero::after {
-  content: ''; position: absolute; top: -200px; right: -250px;
-  width: 700px; height: 700px;
+  content: ''; position: absolute; top: -180px; right: -180px;
+  width: 560px; height: 560px;
   background: radial-gradient(ellipse, rgba(0,212,255,0.10), transparent 65%);
   pointer-events: none;
 }
-.hero-inner { position: relative; z-index: 1; max-width: 920px; margin: 0 auto; text-align: center; }
+.hero-inner { position: relative; z-index: 1; }
+.hero-head { max-width: 760px; margin-bottom: 36px; }
+.hero h1 { margin-bottom: 16px; }
+.hero-sub { font-size: 17px; color: var(--subtle); max-width: 640px; line-height: 1.65; }
 
-.hero-pill {
-  display: inline-flex; align-items: center; gap: 10px;
-  padding: 7px 16px; background: #fff; border: 1px solid var(--border);
-  border-radius: 100px; font-size: 12px; font-weight: 600;
-  color: var(--dark-text); margin-bottom: 28px;
-  box-shadow: 0 1px 2px rgba(0,0,0,0.04);
-}
-.hero-pill-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--success); box-shadow: 0 0 0 4px rgba(16,185,129,0.18); }
-.hero-pill .divider { width: 1px; height: 12px; background: var(--border); }
-.hero-pill .label { color: var(--muted); font-weight: 500; }
-
-.hero h1 { margin-bottom: 22px; }
-.hero-sub { font-size: 18px; color: var(--subtle); max-width: 640px; margin: 0 auto 40px; line-height: 1.65; }
-
-/* ── Tool card ── */
+/* ── Tool ── */
 .tool-card {
   background: #fff; border: 1px solid var(--border);
-  border-radius: var(--radius-lg); padding: 28px;
-  max-width: 720px; margin: 0 auto;
-  box-shadow: 0 24px 60px -20px rgba(9,110,242,0.18), 0 8px 24px -12px rgba(0,0,0,0.08);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 20px 50px -20px rgba(9,110,242,0.16), 0 4px 16px -8px rgba(0,0,0,0.06);
   position: relative; overflow: hidden;
 }
 .tool-card::before {
@@ -161,8 +170,10 @@ h3 { font-size: clamp(20px, 2.2vw, 26px); }
   background: var(--brand-gradient);
 }
 
-.tool-label { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
-.tool-label-text { font-size: 12px; font-weight: 600; color: var(--subtle); text-transform: uppercase; letter-spacing: 1px; }
+.tool-inner { padding: 28px 32px; }
+.tool-head { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 18px; flex-wrap: wrap; }
+.tool-title { font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 700; color: var(--foreground); text-transform: uppercase; letter-spacing: 1.4px; display: flex; align-items: center; gap: 10px; }
+.tool-title-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--success); box-shadow: 0 0 0 4px rgba(16,185,129,0.18); }
 .tool-mode { display: flex; gap: 4px; padding: 3px; background: var(--surface); border-radius: 8px; }
 .tool-mode-btn {
   font-family: inherit; font-size: 12px; font-weight: 600; color: var(--subtle);
@@ -181,13 +192,13 @@ h3 { font-size: clamp(20px, 2.2vw, 26px); }
 .tool-input-wrap:focus-within { border-color: var(--brand-blue); background: #fff; box-shadow: 0 0 0 4px rgba(9,110,242,0.1); }
 .tool-input-icon { color: var(--muted); flex-shrink: 0; }
 .tool-input {
-  flex: 1; height: 56px; background: transparent; border: none; outline: none;
+  flex: 1; height: 54px; background: transparent; border: none; outline: none;
   font-family: inherit; font-size: 15px; color: var(--foreground); padding: 0;
 }
 .tool-input::placeholder { color: var(--muted); }
 
 .tool-submit {
-  height: 56px; padding: 0 28px;
+  height: 54px; padding: 0 24px;
   font-size: 14px; font-weight: 600; color: #fff; background: #000;
   border: none; border-radius: var(--radius); cursor: pointer;
   display: inline-flex; align-items: center; gap: 8px; transition: all 0.2s;
@@ -195,7 +206,7 @@ h3 { font-size: clamp(20px, 2.2vw, 26px); }
 .tool-submit:hover:not(:disabled) { background: #1a1a1a; box-shadow: 0 6px 18px rgba(0,0,0,0.18); }
 .tool-submit:disabled { background: var(--muted); cursor: not-allowed; }
 
-.tool-foot { margin-top: 16px; display: flex; gap: 14px; align-items: center; flex-wrap: wrap; }
+.tool-foot { margin-top: 14px; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
 .tool-suggest-label { font-size: 12px; color: var(--muted); font-weight: 500; }
 .tool-suggest-pill {
   font-family: inherit; font-size: 12px; font-weight: 500; color: var(--subtle);
@@ -204,227 +215,255 @@ h3 { font-size: clamp(20px, 2.2vw, 26px); }
 }
 .tool-suggest-pill:hover { border-color: var(--brand-blue); color: var(--brand-blue); background: var(--brand-gradient-subtle); }
 
-.tool-disclaimer { font-size: 12px; color: var(--muted); margin-top: 14px; text-align: center; }
-.tool-disclaimer strong { color: var(--subtle); font-weight: 600; }
-
-/* ── Result panel ── */
-.result-panel {
-  max-width: 720px; margin: 24px auto 0;
-  background: #fff; border: 1px solid var(--border); border-radius: var(--radius-lg);
-  overflow: hidden;
+/* ── Result panel (lives inside tool card, below input) ── */
+.result-wrap {
+  border-top: 1px solid var(--border);
+  background: var(--surface-2);
   display: none;
-  animation: slideUp 0.4s ease;
 }
-.result-panel.visible { display: block; }
-
-@keyframes slideUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
+.result-wrap.visible { display: block; }
 
 .result-loading {
-  padding: 32px; display: flex; align-items: center; gap: 18px;
+  padding: 28px 32px; display: flex; align-items: center; gap: 18px;
 }
 .spinner {
-  width: 36px; height: 36px; border-radius: 50%;
+  width: 32px; height: 32px; border-radius: 50%;
   border: 3px solid var(--surface); border-top-color: var(--brand-blue);
   animation: spin 0.8s linear infinite; flex-shrink: 0;
 }
 @keyframes spin { to { transform: rotate(360deg); } }
 .result-loading-text { font-size: 14px; color: var(--subtle); }
-.result-loading-text strong { color: var(--foreground); display: block; font-size: 15px; margin-bottom: 2px; }
+.result-loading-text strong { color: var(--foreground); display: block; font-size: 14px; margin-bottom: 2px; }
 .result-loading-steps { display: flex; gap: 6px; margin-top: 8px; font-size: 12px; color: var(--muted); }
 .result-loading-steps .step.done { color: var(--success); }
 .result-loading-steps .step.active { color: var(--brand-blue); font-weight: 600; }
 
-.result-content { display: none; }
+.result-content { display: none; padding: 28px 32px; }
 .result-content.visible { display: block; }
 
-.result-head {
-  padding: 28px 32px; display: flex; align-items: flex-start; justify-content: space-between;
-  gap: 24px; border-bottom: 1px solid var(--border);
-  background: linear-gradient(180deg, rgba(9,110,242,0.025) 0%, transparent 100%);
-}
-.result-head-left { flex: 1; min-width: 0; }
-.result-meta { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; }
+.result-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 24px; margin-bottom: 24px; flex-wrap: wrap; }
+.result-head-left { flex: 1; min-width: 280px; }
+.result-meta { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; flex-wrap: wrap; }
 .result-status {
   display: inline-flex; align-items: center; gap: 6px;
   font-size: 11px; font-weight: 700; color: var(--success);
-  background: rgba(16,185,129,0.1); padding: 4px 10px; border-radius: 100px;
+  background: rgba(16,185,129,0.12); padding: 4px 10px; border-radius: 100px;
   text-transform: uppercase; letter-spacing: 1px;
 }
 .result-status .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--success); }
 .result-meta-url { font-size: 12px; color: var(--muted); font-family: 'JetBrains Mono', monospace; }
+.result-code-row { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; }
 .result-code {
   font-family: 'DM Serif Display', serif; font-size: 56px; line-height: 1;
   background: var(--brand-gradient); -webkit-background-clip: text;
   -webkit-text-fill-color: transparent; background-clip: text;
-  letter-spacing: -0.02em; margin-bottom: 10px;
+  letter-spacing: -0.02em;
 }
-.result-name { font-size: 18px; font-weight: 600; color: var(--foreground); margin-bottom: 6px; }
+.result-code-copy {
+  font-family: inherit; font-size: 12px; font-weight: 600; color: var(--subtle);
+  background: #fff; border: 1px solid var(--border); border-radius: var(--radius-sm);
+  padding: 6px 12px; cursor: pointer; transition: all 0.15s;
+  display: inline-flex; align-items: center; gap: 6px;
+}
+.result-code-copy:hover { border-color: var(--brand-blue); color: var(--brand-blue); }
+.result-name { font-size: 17px; font-weight: 600; color: var(--foreground); margin: 10px 0 4px; }
 .result-category { font-size: 13px; color: var(--subtle); }
 
 .result-confidence {
   background: #fff; border: 1px solid var(--border); border-radius: var(--radius);
-  padding: 16px 18px; min-width: 160px; text-align: center;
+  padding: 14px 16px; min-width: 150px; text-align: center;
 }
-.result-confidence-label { font-size: 11px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
-.result-confidence-value { font-family: 'DM Serif Display', serif; font-size: 32px; line-height: 1; color: var(--success); margin-bottom: 6px; }
+.result-confidence-label { font-size: 11px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
+.result-confidence-value { font-family: 'DM Serif Display', serif; font-size: 30px; line-height: 1; color: var(--success); margin-bottom: 6px; }
 .result-confidence-bar { height: 4px; background: var(--surface); border-radius: 100px; overflow: hidden; }
 .result-confidence-fill { height: 100%; background: var(--success); border-radius: 100px; transition: width 0.6s ease; }
 
-.result-body { padding: 24px 32px; }
-.result-section { margin-bottom: 24px; }
-.result-section:last-child { margin-bottom: 0; }
-.result-section-title {
-  font-size: 11px; font-weight: 700; color: var(--muted);
-  text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 10px;
+/* Anatomy of the code — the "IBAN-structure" style breakdown */
+.anatomy {
+  background: #fff; border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 22px 24px; margin-bottom: 22px;
 }
-.result-section-body { font-size: 14px; color: var(--dark-text); line-height: 1.65; }
-.result-section-body strong { color: var(--foreground); font-weight: 600; }
+.anatomy-label {
+  font-size: 11px; font-weight: 700; color: var(--muted);
+  text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 16px;
+}
+.anatomy-row { display: flex; gap: 4px; align-items: stretch; }
+.anatomy-seg {
+  flex: 1; padding: 14px 12px;
+  background: var(--surface-2);
+  border-radius: var(--radius-sm);
+  text-align: center;
+  border: 1px solid var(--border);
+  position: relative;
+}
+.anatomy-seg.purpose { background: rgba(9,110,242,0.06); border-color: rgba(9,110,242,0.2); }
+.anatomy-seg.major { background: rgba(61,156,245,0.08); border-color: rgba(61,156,245,0.25); }
+.anatomy-seg.sub { background: rgba(0,212,255,0.08); border-color: rgba(0,212,255,0.25); }
+.anatomy-seg-char {
+  font-family: 'JetBrains Mono', monospace; font-size: 28px; font-weight: 600;
+  color: var(--foreground); line-height: 1; margin-bottom: 8px;
+  letter-spacing: 0.06em;
+}
+.anatomy-seg-label {
+  font-size: 11px; font-weight: 600; color: var(--subtle);
+  text-transform: uppercase; letter-spacing: 0.8px;
+}
+.anatomy-seg-desc {
+  font-size: 12px; color: var(--muted); margin-top: 4px; line-height: 1.5;
+}
+
+.result-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.result-tile {
+  background: #fff; border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 18px 20px;
+}
+.result-tile-label { font-size: 11px; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 10px; }
+.result-tile-body { font-size: 13.5px; color: var(--dark-text); line-height: 1.65; }
+.result-tile-body strong { color: var(--foreground); font-weight: 600; }
+.result-tile.full { grid-column: 1 / -1; }
 
 .result-evidence {
-  background: var(--surface-2); border: 1px solid var(--border); border-radius: var(--radius);
-  padding: 14px 16px; font-size: 13px; color: var(--subtle);
-  display: flex; gap: 12px; align-items: flex-start;
+  background: var(--surface-2); border-left: 3px solid var(--brand-blue);
+  padding: 12px 16px; border-radius: 4px;
+  font-size: 13px; color: var(--subtle);
+  font-style: italic;
 }
-.result-evidence-icon { flex-shrink: 0; color: var(--brand-blue); margin-top: 2px; }
-.result-evidence-quote { font-style: italic; }
 
-.result-alternates { display: flex; flex-direction: column; gap: 8px; }
+.result-alt-list { display: flex; flex-direction: column; gap: 8px; }
 .result-alt {
-  display: flex; align-items: center; gap: 14px; padding: 12px 14px;
-  background: var(--surface-2); border: 1px solid var(--border); border-radius: var(--radius);
-  transition: all 0.15s; cursor: pointer;
+  display: flex; align-items: center; gap: 12px; padding: 10px 12px;
+  background: var(--surface-2); border: 1px solid var(--border); border-radius: var(--radius-sm);
+  transition: all 0.15s;
 }
 .result-alt:hover { border-color: var(--brand-blue); background: #fff; }
-.result-alt-code { font-family: 'JetBrains Mono', monospace; font-weight: 600; color: var(--brand-blue); font-size: 13px; width: 60px; flex-shrink: 0; }
+.result-alt-code { font-family: 'JetBrains Mono', monospace; font-weight: 600; color: var(--brand-blue); font-size: 13px; width: 56px; flex-shrink: 0; }
 .result-alt-name { flex: 1; font-size: 13px; color: var(--dark-text); }
 .result-alt-score { font-size: 12px; color: var(--muted); font-weight: 600; }
 
 .result-foot {
-  padding: 20px 32px; border-top: 1px solid var(--border);
-  background: var(--surface-2);
+  margin-top: 22px; padding-top: 20px; border-top: 1px solid var(--border);
   display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap;
 }
 .result-foot-text { font-size: 13px; color: var(--subtle); }
 .result-foot-text strong { color: var(--foreground); }
-.result-actions { display: flex; gap: 10px; }
+.result-actions { display: flex; gap: 8px; }
+
+.tool-disclaimer {
+  padding: 14px 32px;
+  background: var(--surface-2);
+  border-top: 1px solid var(--border);
+  font-size: 12px; color: var(--muted); text-align: center;
+}
+.tool-disclaimer strong { color: var(--subtle); font-weight: 600; }
 
 /* ── Trust strip ── */
 .trust-strip {
-  padding: 56px 0;
-  border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
-  background: var(--surface-2);
+  padding: 32px 0;
+  border-bottom: 1px solid var(--border);
 }
-.trust-strip-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; }
-.trust-stat-value {
-  font-family: 'DM Serif Display', serif; font-size: 44px; line-height: 1;
-  background: var(--brand-gradient); -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent; background-clip: text;
-  margin-bottom: 8px;
+.trust-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;
 }
-.trust-stat-label { font-size: 13px; color: var(--subtle); line-height: 1.5; max-width: 220px; }
+.trust-cell {
+  display: flex; align-items: center; gap: 14px;
+  padding: 6px 0;
+}
+.trust-cell-icon {
+  width: 36px; height: 36px; border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--brand-gradient-subtle); color: var(--brand-blue); flex-shrink: 0;
+}
+.trust-cell-val { font-size: 15px; font-weight: 700; color: var(--foreground); line-height: 1.2; }
+.trust-cell-label { font-size: 12px; color: var(--subtle); line-height: 1.4; margin-top: 2px; }
 
-/* ── Story section ── */
-.story-section { padding: 100px 0; }
-.story-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
-.story-content h2 { margin-bottom: 24px; }
-.story-content .story-lede { font-size: 17px; color: var(--subtle); line-height: 1.75; margin-bottom: 28px; }
-.story-quote {
-  border-left: 3px solid var(--brand-blue); padding: 16px 0 16px 22px;
-  margin-bottom: 28px;
-  font-family: 'DM Serif Display', serif; font-style: italic; font-size: 22px;
-  line-height: 1.4; color: var(--foreground);
-}
-.story-quote-attr { font-family: 'Inter', sans-serif; font-style: normal; font-size: 13px; color: var(--muted); display: block; margin-top: 10px; font-weight: 500; }
+/* ── Section system ── */
+.section { padding: 96px 0; }
+.section--surface { background: var(--surface-2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.section-head { max-width: 720px; margin-bottom: 56px; }
+.section-head.center { margin-left: auto; margin-right: auto; text-align: center; }
+.section-head h2 { margin-bottom: 16px; }
+.section-head p { font-size: 16px; color: var(--subtle); line-height: 1.7; }
 
-.story-finding {
-  display: flex; gap: 14px; align-items: flex-start; padding: 16px 0;
-  border-top: 1px solid var(--border);
+/* ── "What is" two-column education ── */
+.what-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 64px; align-items: center; }
+.what-content h2 { margin-bottom: 20px; }
+.what-content > p {
+  font-size: 16px; color: var(--subtle); line-height: 1.8; margin-bottom: 18px;
 }
-.story-finding:last-child { border-bottom: 1px solid var(--border); }
-.story-finding-num {
-  font-family: 'DM Serif Display', serif; font-size: 26px; color: var(--brand-blue);
-  font-style: italic; flex-shrink: 0; width: 52px;
+.what-content > p strong { color: var(--foreground); font-weight: 600; }
+.what-bullets {
+  list-style: none; margin-top: 28px; display: flex; flex-direction: column; gap: 14px;
 }
-.story-finding-text { font-size: 14px; color: var(--dark-text); line-height: 1.6; }
-.story-finding-text strong { color: var(--foreground); font-weight: 600; }
+.what-bullets li {
+  display: flex; gap: 12px; align-items: flex-start;
+  font-size: 14px; color: var(--dark-text); line-height: 1.65;
+}
+.what-bullets li::before {
+  content: '✓'; flex-shrink: 0; width: 22px; height: 22px; border-radius: 50%;
+  background: var(--brand-gradient-subtle); color: var(--brand-blue);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px; font-weight: 700; margin-top: 1px;
+}
+.what-bullets li strong { color: var(--foreground); font-weight: 600; }
 
-.story-visual {
+.what-visual {
   background: linear-gradient(145deg, #020b1e 0%, #04102a 55%, #010812 100%);
-  border-radius: var(--radius-lg); padding: 36px;
+  border-radius: var(--radius-lg); padding: 32px;
   position: relative; overflow: hidden; min-height: 480px;
-  display: flex; flex-direction: column; justify-content: center; gap: 20px;
+  display: flex; flex-direction: column; justify-content: center; gap: 16px;
 }
-.story-visual::before {
+.what-visual::before {
   content: ''; position: absolute; inset: 0;
   background: linear-gradient(rgba(9,110,242,0.06) 1px, transparent 1px),
     linear-gradient(90deg, rgba(9,110,242,0.06) 1px, transparent 1px);
   background-size: 40px 40px;
 }
-.story-visual::after {
+.what-visual::after {
   content: ''; position: absolute; top: -100px; left: -100px; width: 400px; height: 400px;
   background: radial-gradient(ellipse, rgba(0,212,255,0.18), transparent 65%);
 }
-
 .swift-msg {
   position: relative; z-index: 1;
   background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1);
-  border-radius: var(--radius); padding: 18px 20px;
+  border-radius: var(--radius); padding: 16px 18px;
 }
-.swift-msg-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+.swift-msg-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
 .swift-msg-label { font-size: 10px; font-weight: 700; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 1.5px; font-family: 'JetBrains Mono', monospace; }
 .swift-msg-status { font-size: 10px; font-weight: 700; padding: 3px 8px; border-radius: 100px; text-transform: uppercase; letter-spacing: 1px; font-family: 'JetBrains Mono', monospace; }
 .swift-msg-status.fail { background: rgba(239,68,68,0.15); color: #FCA5A5; border: 1px solid rgba(239,68,68,0.3); }
 .swift-msg-status.success { background: rgba(16,185,129,0.15); color: #6EE7B7; border: 1px solid rgba(16,185,129,0.3); }
-.swift-msg-body { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: rgba(255,255,255,0.7); line-height: 1.7; }
+.swift-msg-body { font-family: 'JetBrains Mono', monospace; font-size: 11.5px; color: rgba(255,255,255,0.7); line-height: 1.7; }
 .swift-msg-body .key { color: #60a5fa; }
 .swift-msg-body .ok { color: #6EE7B7; }
 .swift-msg-body .bad { color: #FCA5A5; }
 .swift-msg-body .muted { color: rgba(255,255,255,0.35); }
-.swift-msg-body .highlight {
-  background: rgba(239,68,68,0.15); padding: 1px 4px; border-radius: 3px;
-}
-.swift-msg-body .highlight.success {
-  background: rgba(16,185,129,0.15);
-}
+.swift-msg-body .highlight { background: rgba(239,68,68,0.15); padding: 1px 4px; border-radius: 3px; }
+.swift-msg-body .highlight.success { background: rgba(16,185,129,0.15); }
 .swift-divider {
   position: relative; z-index: 1;
-  display: flex; align-items: center; gap: 14px;
-  font-family: 'DM Serif Display', serif; font-style: italic; font-size: 13px;
+  display: flex; align-items: center; gap: 12px;
+  font-family: 'DM Serif Display', serif; font-style: italic; font-size: 12px;
   color: rgba(255,255,255,0.5); text-transform: lowercase; letter-spacing: 2px;
 }
-.swift-divider::before, .swift-divider::after {
-  content: ''; flex: 1; height: 1px; background: rgba(255,255,255,0.1);
-}
+.swift-divider::before, .swift-divider::after { content: ''; flex: 1; height: 1px; background: rgba(255,255,255,0.1); }
 
-/* ── How it works ── */
-.how-section { padding: 100px 0; background: var(--surface-2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-.how-header { text-align: center; max-width: 600px; margin: 0 auto 64px; }
-.how-header h2 { margin-bottom: 16px; }
-.how-header p { font-size: 16px; color: var(--subtle); line-height: 1.7; }
-.how-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+/* ── How it works (3 cards) ── */
+.how-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
 .how-step {
   background: #fff; border: 1px solid var(--border); border-radius: var(--radius-lg);
-  padding: 32px; text-align: left; transition: all 0.2s; position: relative;
+  padding: 28px; transition: all 0.2s;
 }
 .how-step:hover { border-color: rgba(9,110,242,0.3); transform: translateY(-2px); box-shadow: 0 12px 32px rgba(9,110,242,0.08); }
 .how-step-num {
-  font-family: 'DM Serif Display', serif; font-style: italic; font-size: 16px;
-  color: var(--brand-blue); margin-bottom: 18px; display: flex; align-items: center; gap: 8px;
+  font-family: 'DM Serif Display', serif; font-style: italic; font-size: 14px;
+  color: var(--brand-blue); margin-bottom: 16px; display: flex; align-items: center; gap: 8px;
 }
-.how-step-num::before { content: ''; width: 24px; height: 1px; background: var(--brand-blue); }
-.how-step h3 { font-size: 22px; margin-bottom: 12px; }
+.how-step-num::before { content: ''; width: 22px; height: 1px; background: var(--brand-blue); }
+.how-step h3 { font-size: 22px; margin-bottom: 10px; }
 .how-step p { font-size: 14px; color: var(--subtle); line-height: 1.7; }
 
-/* ── Common codes ── */
-.codes-section { padding: 100px 0; }
-.codes-header { text-align: center; max-width: 640px; margin: 0 auto 56px; }
-.codes-header h2 { margin-bottom: 16px; }
-.codes-header p { font-size: 16px; color: var(--subtle); line-height: 1.7; }
-
-.codes-tabs { display: flex; gap: 8px; justify-content: center; margin-bottom: 32px; flex-wrap: wrap; }
+/* ── Coverage / codes table ── */
+.codes-tabs { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 24px; }
 .codes-tab {
   font-family: inherit; font-size: 13px; font-weight: 500; color: var(--subtle);
   padding: 8px 16px; background: #fff; border: 1px solid var(--border); border-radius: 100px;
@@ -439,14 +478,11 @@ h3 { font-size: clamp(20px, 2.2vw, 26px); }
 }
 .codes-table { width: 100%; border-collapse: collapse; }
 .codes-table th {
-  text-align: left; padding: 16px 24px; font-size: 11px; font-weight: 700;
+  text-align: left; padding: 14px 22px; font-size: 11px; font-weight: 700;
   color: var(--muted); text-transform: uppercase; letter-spacing: 1.5px;
   background: var(--surface-2); border-bottom: 1px solid var(--border);
 }
-.codes-table td {
-  padding: 18px 24px; border-bottom: 1px solid var(--border); font-size: 14px;
-  vertical-align: middle;
-}
+.codes-table td { padding: 16px 22px; border-bottom: 1px solid var(--border); font-size: 14px; vertical-align: middle; }
 .codes-table tr:last-child td { border-bottom: none; }
 .codes-table tr:hover td { background: var(--surface-2); }
 .codes-table .code-cell { font-family: 'JetBrains Mono', monospace; font-weight: 600; color: var(--brand-blue); width: 100px; }
@@ -455,14 +491,12 @@ h3 { font-size: clamp(20px, 2.2vw, 26px); }
 .codes-table .typical-cell { color: var(--muted); font-size: 13px; width: 200px; }
 
 /* ── FAQ ── */
-.faq-section { padding: 100px 0; background: var(--surface-2); border-top: 1px solid var(--border); }
-.faq-grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: 64px; }
-.faq-side h2 { margin-bottom: 20px; }
-.faq-side p { font-size: 15px; color: var(--subtle); line-height: 1.7; margin-bottom: 24px; }
+.faq-grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: 56px; }
+.faq-side h2 { margin-bottom: 18px; }
+.faq-side p { font-size: 15px; color: var(--subtle); line-height: 1.7; margin-bottom: 22px; }
 .faq-side a { color: var(--brand-blue); font-weight: 600; text-decoration: none; }
 .faq-side a:hover { text-decoration: underline; }
-
-.faq-list { display: flex; flex-direction: column; gap: 12px; }
+.faq-list { display: flex; flex-direction: column; gap: 10px; }
 .faq-item {
   background: #fff; border: 1px solid var(--border); border-radius: var(--radius);
   overflow: hidden; transition: all 0.2s;
@@ -470,7 +504,7 @@ h3 { font-size: clamp(20px, 2.2vw, 26px); }
 .faq-item.open { border-color: rgba(9,110,242,0.3); box-shadow: 0 8px 24px rgba(9,110,242,0.06); }
 .faq-q {
   width: 100%; text-align: left; background: transparent; border: none;
-  padding: 20px 22px; font-family: inherit; font-size: 15px; font-weight: 600;
+  padding: 18px 22px; font-family: inherit; font-size: 15px; font-weight: 600;
   color: var(--foreground); cursor: pointer;
   display: flex; align-items: center; justify-content: space-between; gap: 16px;
 }
@@ -478,6 +512,7 @@ h3 { font-size: clamp(20px, 2.2vw, 26px); }
   flex-shrink: 0; width: 24px; height: 24px; border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
   background: var(--surface); color: var(--subtle); transition: all 0.2s;
+  font-size: 16px; line-height: 1;
 }
 .faq-item.open .faq-q-icon { background: var(--brand-blue); color: #fff; transform: rotate(45deg); }
 .faq-a {
@@ -486,11 +521,37 @@ h3 { font-size: clamp(20px, 2.2vw, 26px); }
 }
 .faq-item.open .faq-a { padding: 0 22px 22px; max-height: 400px; }
 
+/* ── Related tools ── */
+.related-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.related-card {
+  background: #fff; border: 1px solid var(--border); border-radius: var(--radius-lg);
+  padding: 24px; transition: all 0.2s; text-decoration: none; color: inherit;
+  display: block; position: relative;
+}
+.related-card:hover { border-color: rgba(9,110,242,0.3); transform: translateY(-2px); box-shadow: 0 12px 32px rgba(9,110,242,0.08); }
+.related-card.current {
+  background: var(--brand-gradient-subtle);
+  border-color: rgba(9,110,242,0.25);
+}
+.related-icon {
+  width: 36px; height: 36px; border-radius: 8px; background: var(--surface);
+  display: flex; align-items: center; justify-content: center; margin-bottom: 14px;
+  color: var(--brand-blue);
+}
+.related-card h4 { font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 600; margin-bottom: 6px; line-height: 1.3; }
+.related-card p { font-size: 13px; color: var(--subtle); line-height: 1.6; }
+.related-tag {
+  position: absolute; top: 16px; right: 16px;
+  font-size: 10px; font-weight: 700; color: var(--brand-blue);
+  background: #fff; border: 1px solid rgba(9,110,242,0.25);
+  padding: 3px 8px; border-radius: 100px;
+  text-transform: uppercase; letter-spacing: 1px;
+}
+
 /* ── CTA ── */
-.cta-section { padding: 100px 0; }
 .cta-card {
   background: linear-gradient(145deg, #020b1e 0%, #04102a 55%, #010812 100%);
-  border-radius: 20px; padding: 72px 48px; text-align: center;
+  border-radius: 20px; padding: 64px 48px; text-align: center;
   position: relative; overflow: hidden;
 }
 .cta-card::before {
@@ -504,17 +565,17 @@ h3 { font-size: clamp(20px, 2.2vw, 26px); }
   background: radial-gradient(ellipse, rgba(0,180,255,0.14), transparent 65%);
 }
 .cta-card > * { position: relative; z-index: 1; }
-.cta-card .section-label { color: var(--brand-cyan); }
-.cta-card h2 { color: #fff; margin-bottom: 18px; max-width: 720px; margin-left: auto; margin-right: auto; }
-.cta-card p { color: rgba(255,255,255,0.65); font-size: 17px; max-width: 560px; margin: 0 auto 36px; line-height: 1.7; }
-.cta-actions { display: flex; justify-content: center; gap: 14px; }
+.cta-card .eyebrow { color: var(--brand-cyan); }
+.cta-card h2 { color: #fff; margin-bottom: 16px; max-width: 720px; margin-left: auto; margin-right: auto; }
+.cta-card p { color: rgba(255,255,255,0.65); font-size: 17px; max-width: 560px; margin: 0 auto 32px; line-height: 1.7; }
+.cta-actions { display: flex; justify-content: center; gap: 12px; }
 .btn-white { background: #fff; color: #000; }
 .btn-white:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(255,255,255,0.2); }
 .btn-ghost-white { background: transparent; color: rgba(255,255,255,0.85); border: 1px solid rgba(255,255,255,0.18); }
 .btn-ghost-white:hover { border-color: rgba(255,255,255,0.4); color: #fff; }
 
 /* ── Footer ── */
-.footer { padding: 56px 0 28px; border-top: 1px solid var(--border); }
+.footer { padding: 56px 0 28px; border-top: 1px solid var(--border); background: var(--surface-2); }
 .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 40px; }
 .footer-brand p { font-size: 14px; color: var(--subtle); margin-top: 16px; line-height: 1.65; max-width: 320px; }
 .footer-col h4 { font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--muted); margin-bottom: 18px; }
@@ -526,28 +587,28 @@ h3 { font-size: clamp(20px, 2.2vw, 26px); }
 .footer-bottom-links a { font-size: 13px; color: var(--muted); text-decoration: none; }
 .footer-bottom-links a:hover { color: var(--foreground); }
 
-/* ── Reveal animation ── */
-.reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
-.reveal.visible { opacity: 1; transform: translateY(0); }
-
 /* ── Responsive ── */
 @media (max-width: 1024px) {
-  .story-grid, .faq-grid { grid-template-columns: 1fr; gap: 48px; }
-  .trust-strip-grid { grid-template-columns: repeat(2, 1fr); gap: 32px; }
-  .how-steps { grid-template-columns: 1fr; gap: 16px; }
+  .what-grid, .faq-grid { grid-template-columns: 1fr; gap: 48px; }
+  .trust-grid { grid-template-columns: repeat(2, 1fr); }
+  .how-grid { grid-template-columns: 1fr; gap: 16px; }
+  .related-grid { grid-template-columns: repeat(2, 1fr); }
   .footer-grid { grid-template-columns: 2fr 1fr 1fr; }
+  .result-grid { grid-template-columns: 1fr; }
 }
 @media (max-width: 768px) {
   .nav-links, .nav-region { display: none; }
-  .hero { padding: 110px 0 48px; }
-  .hero h1 { font-size: 38px; }
+  .hero h1 { font-size: 34px; }
+  .hero-sub { font-size: 16px; }
+  .tool-inner, .result-content { padding: 22px; }
   .tool-input-row { flex-direction: column; }
   .tool-submit { width: 100%; }
-  .result-head { flex-direction: column; }
-  .result-confidence { width: 100%; }
+  .anatomy { padding: 18px; }
+  .anatomy-seg-char { font-size: 22px; }
   .codes-table th:nth-child(4), .codes-table td:nth-child(4) { display: none; }
   .codes-table td, .codes-table th { padding: 14px 16px; }
-  .cta-card { padding: 56px 24px; }
+  .section { padding: 64px 0; }
+  .cta-card { padding: 48px 24px; }
   .cta-actions { flex-direction: column; }
   .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
 }
@@ -567,7 +628,7 @@ h3 { font-size: clamp(20px, 2.2vw, 26px); }
     </div>
     <ul class="nav-links">
       <li><a href="#">Products</a></li>
-      <li><a href="#">Tools</a></li>
+      <li><a href="#" class="active">Tools</a></li>
       <li><a href="#">Pricing</a></li>
       <li><a href="#">Docs</a></li>
       <li><a href="#">About</a></li>
@@ -579,136 +640,173 @@ h3 { font-size: clamp(20px, 2.2vw, 26px); }
   </div>
 </nav>
 
+<!-- ════════════ BREADCRUMB ════════════ -->
+<div class="container">
+  <div class="breadcrumb">
+    <a href="#">Global</a>
+    <span class="sep">/</span>
+    <a href="#">Free tools</a>
+    <span class="sep">/</span>
+    <span class="current">Export Purpose Code Finder</span>
+  </div>
+</div>
+
 <!-- ════════════ HERO + TOOL ════════════ -->
 <section class="hero">
   <div class="container">
     <div class="hero-inner">
-      <span class="hero-pill">
-        <span class="hero-pill-dot"></span>
-        <span><strong>New tool</strong></span>
-        <span class="divider"></span>
-        <span class="label">Built for Indian exporters · RBI FED Master Direction compliant</span>
-      </span>
-      <h1>Find your <span class="gradient-text">Export Purpose Code</span><br>in 30 seconds.</h1>
-      <p class="hero-sub">
-        Drop your website URL below. We'll scan what you sell, match it to the right RBI code, and tell your bank exactly what to file — so your USD, EUR, and GBP receipts actually land.
-      </p>
-
-      <!-- ── Tool card ── -->
-      <div class="tool-card">
-        <div class="tool-label">
-          <span class="tool-label-text">Export Purpose Code Finder</span>
-          <div class="tool-mode">
-            <button class="tool-mode-btn active" data-mode="url">By website</button>
-            <button class="tool-mode-btn" data-mode="describe">By description</button>
-          </div>
-        </div>
-
-        <div class="tool-input-row">
-          <div class="tool-input-wrap">
-            <svg class="tool-input-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
-            </svg>
-            <input class="tool-input" id="urlInput" type="text" placeholder="https://yourcompany.com" autocomplete="off">
-          </div>
-          <button class="tool-submit" id="findBtn">
-            Find my code
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-          </button>
-        </div>
-
-        <div class="tool-foot">
-          <span class="tool-suggest-label">Try:</span>
-          <button class="tool-suggest-pill" data-url="https://razorpay.com">razorpay.com</button>
-          <button class="tool-suggest-pill" data-url="https://zerodha.com">zerodha.com</button>
-          <button class="tool-suggest-pill" data-url="https://freshworks.com">freshworks.com</button>
-          <button class="tool-suggest-pill" data-url="https://urbancompany.com">urbancompany.com</button>
-        </div>
-
-        <p class="tool-disclaimer">
-          <strong>For guidance only.</strong> Final code attribution rests with your AD bank under the RBI FED Master Direction on Export of Goods & Services.
+      <div class="hero-head">
+        <span class="eyebrow">Free tool · RBI FED Master Direction</span>
+        <h1>Find your <span class="gradient-text">Export Purpose Code</span> in 30 seconds.</h1>
+        <p class="hero-sub">
+          Drop in your website URL. We scan what you sell, match it to the right RBI code, and tell your AD bank exactly what to file — so your USD, EUR, and GBP receipts actually land.
         </p>
       </div>
 
-      <!-- ── Result panel ── -->
-      <div class="result-panel" id="resultPanel">
-        <div class="result-loading" id="resultLoading">
-          <div class="spinner"></div>
-          <div>
-            <div class="result-loading-text">
-              <strong id="loadingStrong">Reading your website…</strong>
-              <span id="loadingSub">Looking at product pages, pricing, and footer disclosures</span>
+      <!-- ── Tool card ── -->
+      <div class="tool-card">
+        <div class="tool-inner">
+          <div class="tool-head">
+            <span class="tool-title"><span class="tool-title-dot"></span> Export Purpose Code Finder</span>
+            <div class="tool-mode">
+              <button class="tool-mode-btn active" data-mode="url">By website</button>
+              <button class="tool-mode-btn" data-mode="describe">By description</button>
             </div>
-            <div class="result-loading-steps">
-              <span class="step done">Fetch</span> ·
-              <span class="step active" id="step2">Classify</span> ·
-              <span class="step" id="step3">Match RBI code</span>
+          </div>
+
+          <div class="tool-input-row">
+            <div class="tool-input-wrap">
+              <svg class="tool-input-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+              </svg>
+              <input class="tool-input" id="urlInput" type="text" placeholder="https://yourcompany.com" autocomplete="off">
+            </div>
+            <button class="tool-submit" id="findBtn">
+              Find my code
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </button>
+          </div>
+
+          <div class="tool-foot">
+            <span class="tool-suggest-label">Try:</span>
+            <button class="tool-suggest-pill" data-url="https://razorpay.com">razorpay.com</button>
+            <button class="tool-suggest-pill" data-url="https://zerodha.com">zerodha.com</button>
+            <button class="tool-suggest-pill" data-url="https://freshworks.com">freshworks.com</button>
+            <button class="tool-suggest-pill" data-url="https://urbancompany.com">urbancompany.com</button>
+          </div>
+        </div>
+
+        <!-- Result section -->
+        <div class="result-wrap" id="resultPanel">
+          <div class="result-loading" id="resultLoading">
+            <div class="spinner"></div>
+            <div>
+              <div class="result-loading-text">
+                <strong id="loadingStrong">Reading your website…</strong>
+                <span id="loadingSub">Looking at product pages, pricing, and footer disclosures</span>
+              </div>
+              <div class="result-loading-steps">
+                <span class="step done">Fetch</span> ·
+                <span class="step active" id="step2">Classify</span> ·
+                <span class="step" id="step3">Match RBI code</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="result-content" id="resultContent">
+            <div class="result-head">
+              <div class="result-head-left">
+                <div class="result-meta">
+                  <span class="result-status"><span class="dot"></span> Recommended</span>
+                  <span class="result-meta-url" id="resultUrl">razorpay.com</span>
+                </div>
+                <div class="result-code-row">
+                  <span class="result-code" id="resultCode">P1006</span>
+                  <button class="result-code-copy" id="copyBtn">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                    Copy
+                  </button>
+                </div>
+                <div class="result-name" id="resultName">Software-as-a-Service (SaaS) — Cloud computing services</div>
+                <div class="result-category" id="resultCategory">Category: Information & technology-enabled services</div>
+              </div>
+              <div class="result-confidence">
+                <div class="result-confidence-label">Confidence</div>
+                <div class="result-confidence-value" id="confidenceValue">94%</div>
+                <div class="result-confidence-bar"><div class="result-confidence-fill" id="confidenceFill" style="width: 94%"></div></div>
+              </div>
+            </div>
+
+            <!-- ── Anatomy of the code (mirrors IBAN structure breakdown) ── -->
+            <div class="anatomy">
+              <div class="anatomy-label">Anatomy of your code</div>
+              <div class="anatomy-row">
+                <div class="anatomy-seg purpose">
+                  <div class="anatomy-seg-char" id="anaP">P</div>
+                  <div class="anatomy-seg-label">Purpose prefix</div>
+                  <div class="anatomy-seg-desc">RBI BoP series. Always "P" for outward exports.</div>
+                </div>
+                <div class="anatomy-seg major">
+                  <div class="anatomy-seg-char" id="anaMajor">10</div>
+                  <div class="anatomy-seg-label">Service group</div>
+                  <div class="anatomy-seg-desc" id="anaMajorDesc">10 — Other business services</div>
+                </div>
+                <div class="anatomy-seg sub">
+                  <div class="anatomy-seg-char" id="anaSub">06</div>
+                  <div class="anatomy-seg-label">Sub-category</div>
+                  <div class="anatomy-seg-desc" id="anaSubDesc">06 — SaaS / Cloud computing</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="result-grid">
+              <div class="result-tile">
+                <div class="result-tile-label">Why this code</div>
+                <div class="result-tile-body" id="resultWhy">
+                  Your homepage describes a recurring-revenue cloud platform sold to businesses. Under the RBI FED Master Direction, receipts for software accessed remotely fall under <strong>P1006 — SaaS</strong>, not <strong>P0801</strong> (custom development) or <strong>P0807</strong> (other IT services).
+                </div>
+              </div>
+
+              <div class="result-tile">
+                <div class="result-tile-label">Evidence we used</div>
+                <div class="result-tile-body">
+                  <div class="result-evidence" id="resultEvidence">
+                    "All-in-one payments platform. Monthly subscription. APIs, dashboards, and reconciliation tools delivered as a cloud service." — from /pricing and /products.
+                  </div>
+                </div>
+              </div>
+
+              <div class="result-tile full">
+                <div class="result-tile-label">Alternates to consider</div>
+                <div class="result-alt-list" id="resultAlternates">
+                  <div class="result-alt">
+                    <span class="result-alt-code">P0807</span>
+                    <span class="result-alt-name">Other IT services — Use if a deal includes one-off integration / implementation work</span>
+                    <span class="result-alt-score">62%</span>
+                  </div>
+                  <div class="result-alt">
+                    <span class="result-alt-code">P0801</span>
+                    <span class="result-alt-name">Hardware consultancy & implementation — Not a match unless you ship physical devices</span>
+                    <span class="result-alt-score">14%</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="result-foot">
+              <span class="result-foot-text">
+                <strong>Looks right?</strong> Save this and we'll pre-fill it on every invoice you send through Decentro Global.
+              </span>
+              <div class="result-actions">
+                <button class="btn btn-outline btn-sm">Download report</button>
+                <button class="btn btn-primary btn-sm">Email me a summary</button>
+              </div>
             </div>
           </div>
         </div>
 
-        <div class="result-content" id="resultContent">
-          <div class="result-head">
-            <div class="result-head-left">
-              <div class="result-meta">
-                <span class="result-status"><span class="dot"></span> Recommended</span>
-                <span class="result-meta-url" id="resultUrl">razorpay.com</span>
-              </div>
-              <div class="result-code" id="resultCode">P1006</div>
-              <div class="result-name" id="resultName">Software-as-a-Service (SaaS) — Cloud computing services</div>
-              <div class="result-category" id="resultCategory">Category: Information & technology-enabled services</div>
-            </div>
-            <div class="result-confidence">
-              <div class="result-confidence-label">Confidence</div>
-              <div class="result-confidence-value" id="confidenceValue">94%</div>
-              <div class="result-confidence-bar"><div class="result-confidence-fill" id="confidenceFill" style="width: 94%"></div></div>
-            </div>
-          </div>
-
-          <div class="result-body">
-            <div class="result-section">
-              <div class="result-section-title">Why this code</div>
-              <div class="result-section-body" id="resultWhy">
-                Your homepage describes a recurring-revenue cloud platform sold to businesses. Under RBI's FED Master Direction, cross-border receipts for software accessed remotely fall under <strong>P1006 — SaaS</strong>, not <strong>P0801</strong> (custom software development) or <strong>P0807</strong> (other IT services).
-              </div>
-            </div>
-
-            <div class="result-section">
-              <div class="result-section-title">Evidence we used</div>
-              <div class="result-evidence">
-                <svg class="result-evidence-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-                <div class="result-evidence-quote" id="resultEvidence">
-                  "All-in-one payments platform. Monthly subscription. APIs, dashboards, and reconciliation tools delivered as a cloud service." — from your /pricing and /products pages.
-                </div>
-              </div>
-            </div>
-
-            <div class="result-section">
-              <div class="result-section-title">Alternates to consider</div>
-              <div class="result-alternates" id="resultAlternates">
-                <div class="result-alt">
-                  <span class="result-alt-code">P0807</span>
-                  <span class="result-alt-name">Other IT services — Use if a deal includes one-off integration / implementation work</span>
-                  <span class="result-alt-score">62%</span>
-                </div>
-                <div class="result-alt">
-                  <span class="result-alt-code">P0801</span>
-                  <span class="result-alt-name">Hardware consultancy & implementation — Not a match unless you ship physical devices</span>
-                  <span class="result-alt-score">14%</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="result-foot">
-            <span class="result-foot-text">
-              <strong>Looks right?</strong> Save this and we'll pre-fill it on every invoice you send through Decentro Global.
-            </span>
-            <div class="result-actions">
-              <button class="btn btn-outline btn-sm">Copy code</button>
-              <button class="btn btn-primary btn-sm">Email me the report</button>
-            </div>
-          </div>
+        <div class="tool-disclaimer">
+          <strong>For guidance only.</strong> Final code attribution rests with your AD bank under the RBI FED Master Direction on Export of Goods & Services.
         </div>
       </div>
     </div>
@@ -718,64 +816,69 @@ h3 { font-size: clamp(20px, 2.2vw, 26px); }
 <!-- ════════════ TRUST STRIP ════════════ -->
 <section class="trust-strip">
   <div class="container">
-    <div class="trust-strip-grid">
-      <div>
-        <div class="trust-stat-value">11/12</div>
-        <div class="trust-stat-label">SMB founders we surveyed had never heard of an Export Purpose Code.</div>
+    <div class="trust-grid">
+      <div class="trust-cell">
+        <div class="trust-cell-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <div>
+          <div class="trust-cell-val">~30 seconds</div>
+          <div class="trust-cell-label">URL to code, no signup</div>
+        </div>
       </div>
-      <div>
-        <div class="trust-stat-value">~47</div>
-        <div class="trust-stat-label">Pages of RBI FED Master Direction your finance team would otherwise read.</div>
+      <div class="trust-cell">
+        <div class="trust-cell-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div>
+          <div class="trust-cell-val">FED Master Direction</div>
+          <div class="trust-cell-label">Mapped against the live RBI Annexure</div>
+        </div>
       </div>
-      <div>
-        <div class="trust-stat-value">30s</div>
-        <div class="trust-stat-label">Median time from URL paste to a code your AD bank will accept.</div>
+      <div class="trust-cell">
+        <div class="trust-cell-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><polyline points="17 11 19 13 23 9"/></svg>
+        </div>
+        <div>
+          <div class="trust-cell-val">400+ SMBs</div>
+          <div class="trust-cell-label">Onboarded for cross-border receipts</div>
+        </div>
       </div>
-      <div>
-        <div class="trust-stat-value">0₹</div>
-        <div class="trust-stat-label">Cost to use this tool. Free, no signup, no email gate.</div>
+      <div class="trust-cell">
+        <div class="trust-cell-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <div>
+          <div class="trust-cell-val">Free, forever</div>
+          <div class="trust-cell-label">No email gate. No paywall.</div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ════════════ STORY ════════════ -->
-<section class="story-section">
+<!-- ════════════ WHAT IS AN EXPORT PURPOSE CODE ════════════ -->
+<section class="section">
   <div class="container">
-    <div class="story-grid">
-      <div class="story-content">
-        <div class="section-label">Why we built this</div>
-        <h2>Your bank won't tell you, but <span class="gradient-text">your money is stuck</span> until they get this code.</h2>
-        <p class="story-lede">
-          We sat down with 12 SMB founders shipping software, design, and consulting to overseas clients. Every one of them had hit the same wall: an inward remittance that wouldn't clear. The reason was almost always the same.
+    <div class="what-grid">
+      <div class="what-content">
+        <span class="eyebrow">The basics</span>
+        <h2>What is an <span class="gradient-text">Export Purpose Code</span>?</h2>
+        <p>
+          An Export Purpose Code is a five-character code — always starting with <strong>P</strong> — that the Reserve Bank of India uses to classify every cross-border foreign-currency receipt into a service or goods category.
         </p>
-
-        <div class="story-quote">
-          "What's an export purpose code? My bank emailed me a PDF and asked me to pick one. There were three hundred of them."
-          <span class="story-quote-attr">— founder, Bangalore-based SaaS company, ARR ₹4 Cr</span>
-        </div>
-
-        <div class="story-finding">
-          <span class="story-finding-num">01</span>
-          <div class="story-finding-text">
-            <strong>11 out of 12</strong> had never heard the term "export purpose code" before going live with overseas billing.
-          </div>
-        </div>
-        <div class="story-finding">
-          <span class="story-finding-num">02</span>
-          <div class="story-finding-text">
-            <strong>It's an RBI mandate</strong> under the FED Master Direction. Without it, your AD bank can't file your FIRA / e-BRC, which means the receipt doesn't reconcile.
-          </div>
-        </div>
-        <div class="story-finding">
-          <span class="story-finding-num">03</span>
-          <div class="story-finding-text">
-            <strong>We were asking founders to decode a compliance requirement they'd never encountered.</strong> So we stopped explaining it and built a tool that just answers the question.
-          </div>
-        </div>
+        <p>
+          When an overseas client pays you in USD, EUR, or GBP, your Authorised Dealer (AD) bank must report that receipt to the RBI's balance-of-payments system. The code tells the RBI what you were paid <strong>for</strong>. Without it, the bank can't issue your FIRA / e-BRC — which means the receipt can't be reconciled against your GST exports.
+        </p>
+        <ul class="what-bullets">
+          <li><span><strong>Mandated by RBI</strong> under the FED Master Direction on Export of Goods & Services.</span></li>
+          <li><span><strong>Roughly 300 codes</strong> exist in the live Annexure. Most SMBs only ever touch two or three.</span></li>
+          <li><span><strong>Filed by your AD bank</strong>, but you're the one who has to pick it (or argue with them when they pick the wrong one).</span></li>
+          <li><span><strong>Not the same</strong> as a HS Code (goods customs) or SAC Code (GST). Each has a different taxonomy and purpose.</span></li>
+        </ul>
       </div>
 
-      <div class="story-visual">
+      <div class="what-visual">
         <div class="swift-msg">
           <div class="swift-msg-head">
             <span class="swift-msg-label">SWIFT MT103 · Before</span>
@@ -790,9 +893,7 @@ h3 { font-size: clamp(20px, 2.2vw, 26px); }
             <span class="bad">→ AD Bank: cannot file FIRA, funds parked.</span>
           </div>
         </div>
-
         <div class="swift-divider">routed via decentro</div>
-
         <div class="swift-msg">
           <div class="swift-msg-head">
             <span class="swift-msg-label">SWIFT MT103 · After</span>
@@ -812,15 +913,16 @@ h3 { font-size: clamp(20px, 2.2vw, 26px); }
   </div>
 </section>
 
-<!-- ════════════ HOW IT WORKS ════════════ -->
-<section class="how-section">
+<!-- ════════════ HOW THE TOOL WORKS ════════════ -->
+<section class="section section--surface">
   <div class="container">
-    <div class="how-header">
-      <div class="section-label">How it works</div>
-      <h2>Three steps. No login. No paperwork.</h2>
-      <p>Run the tool. Show the code to your bank. Get paid. That's it.</p>
+    <div class="section-head center">
+      <span class="eyebrow">How the tool works</span>
+      <h2>From URL to code in three steps.</h2>
+      <p>No login, no API keys, no email gate. Run it as many times as you need.</p>
     </div>
-    <div class="how-steps">
+
+    <div class="how-grid">
       <div class="how-step">
         <div class="how-step-num">Step 01</div>
         <h3>Drop your URL.</h3>
@@ -828,23 +930,23 @@ h3 { font-size: clamp(20px, 2.2vw, 26px); }
       </div>
       <div class="how-step">
         <div class="how-step-num">Step 02</div>
-        <h3>We classify the revenue.</h3>
-        <p>Our model maps your offering to one of the ~300 codes in the RBI FED Master Direction Annexure. Each candidate gets a confidence score and an evidence trail.</p>
+        <h3>We classify your revenue.</h3>
+        <p>Our model maps your offering against the RBI FED Master Direction Annexure. Each candidate code gets a confidence score and an evidence trail from your site.</p>
       </div>
       <div class="how-step">
         <div class="how-step-num">Step 03</div>
         <h3>Hand it to your AD bank.</h3>
-        <p>Copy the code into your invoice or your bank's inward remittance portal. Final attribution rests with your AD bank, but you're 95% of the way there.</p>
+        <p>Copy the code into your invoice or your bank's inward remittance portal. Final attribution rests with your bank, but you're 95% of the way there.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ════════════ COMMON CODES ════════════ -->
-<section class="codes-section">
+<!-- ════════════ COMMON CODES (coverage table) ════════════ -->
+<section class="section">
   <div class="container">
-    <div class="codes-header">
-      <div class="section-label">Reference</div>
+    <div class="section-head">
+      <span class="eyebrow">Coverage</span>
       <h2>The codes Indian SMBs use most.</h2>
       <p>A condensed view of the codes we see exporting founders need most. The full Annexure has roughly 300 codes — most businesses only ever touch two or three.</p>
     </div>
@@ -866,81 +968,97 @@ h3 { font-size: clamp(20px, 2.2vw, 26px); }
             <th>Typical filer</th>
           </tr>
         </thead>
-        <tbody id="codesTbody">
-          <!-- populated by JS -->
-        </tbody>
+        <tbody id="codesTbody"></tbody>
       </table>
     </div>
   </div>
 </section>
 
 <!-- ════════════ FAQ ════════════ -->
-<section class="faq-section">
+<section class="section section--surface">
   <div class="container">
     <div class="faq-grid">
       <div class="faq-side">
-        <div class="section-label">FAQ</div>
-        <h2>The questions we kept getting on calls.</h2>
-        <p>If your situation isn't covered here, the fastest path is a 15-minute call with one of our cross-border banking specialists. We've helped 400+ Indian SMBs sort out their first international receipt.</p>
+        <span class="eyebrow">FAQ</span>
+        <h2>Common questions, answered.</h2>
+        <p>If your situation isn't covered below, the fastest path is a 15-minute call with one of our cross-border banking specialists.</p>
         <p><a href="#">Talk to a banking specialist →</a></p>
       </div>
 
       <div class="faq-list">
         <div class="faq-item">
-          <button class="faq-q">
-            Is this an official RBI tool?
-            <span class="faq-q-icon">+</span>
-          </button>
-          <div class="faq-a">
-            No — it's a free tool we built for the SMB community. Decentro is a regulated player in India's cross-border infrastructure, and our recommendations are based on the published RBI FED Master Direction Annexure. But final attribution always rests with your AD (Authorised Dealer) bank.
-          </div>
+          <button class="faq-q">Is this an official RBI tool? <span class="faq-q-icon">+</span></button>
+          <div class="faq-a">No — it's a free tool we built for the SMB community. Decentro is a regulated player in India's cross-border infrastructure, and our recommendations are based on the published RBI FED Master Direction Annexure. Final attribution always rests with your AD bank.</div>
         </div>
         <div class="faq-item">
-          <button class="faq-q">
-            What if I have multiple revenue streams?
-            <span class="faq-q-icon">+</span>
-          </button>
-          <div class="faq-a">
-            You'll have multiple codes. Each invoice / receipt is filed under one code, so if you sell SaaS subscriptions and one-off implementation projects, those go in separately. Run the tool, then split your invoices accordingly — most banks can handle multiple codes per beneficiary account.
-          </div>
+          <button class="faq-q">What if I have multiple revenue streams? <span class="faq-q-icon">+</span></button>
+          <div class="faq-a">You'll have multiple codes. Each invoice / receipt is filed under one code, so if you sell SaaS subscriptions and one-off implementation projects, those go in separately. Run the tool, then split your invoices accordingly — most banks can handle multiple codes per beneficiary account.</div>
         </div>
         <div class="faq-item">
-          <button class="faq-q">
-            Does Decentro file this with my bank for me?
-            <span class="faq-q-icon">+</span>
-          </button>
-          <div class="faq-a">
-            If you're routing receipts through Decentro Global, yes — we pre-fill the code on every payment, auto-generate the FIRA, and reconcile against your GSTN exports. If you're still using a traditional AD bank, the tool tells you what to put on the inward remittance form yourself.
-          </div>
+          <button class="faq-q">Does Decentro file this with my bank for me? <span class="faq-q-icon">+</span></button>
+          <div class="faq-a">If you're routing receipts through Decentro Global, yes — we pre-fill the code on every payment, auto-generate the FIRA, and reconcile against your GSTN exports. If you're still using a traditional AD bank, the tool tells you what to put on the inward remittance form yourself.</div>
         </div>
         <div class="faq-item">
-          <button class="faq-q">
-            What's the worst case if I pick the wrong code?
-            <span class="faq-q-icon">+</span>
-          </button>
-          <div class="faq-a">
-            In practice: the funds clear, but the e-BRC reconciliation later runs into a mismatch and your CA / bank sends it back for re-classification. In rare cases — and especially for very large remittances or when the code crosses into a restricted category — the AD bank can hold the funds pending clarification. Picking a defensible code up front avoids both.
-          </div>
+          <button class="faq-q">What's the worst case if I pick the wrong code? <span class="faq-q-icon">+</span></button>
+          <div class="faq-a">In practice: the funds clear, but the e-BRC reconciliation runs into a mismatch and your CA / bank sends it back for re-classification. In rare cases — especially for very large remittances or when the code crosses into a restricted category — the AD bank can hold the funds pending clarification. Picking a defensible code up front avoids both.</div>
         </div>
         <div class="faq-item">
-          <button class="faq-q">
-            How is this different from a HS Code or SAC Code?
-            <span class="faq-q-icon">+</span>
-          </button>
-          <div class="faq-a">
-            HS Codes are for physical goods at customs. SAC Codes are for GST classification within India. Export Purpose Codes (the P-codes) are specifically for the RBI's balance-of-payments reporting on foreign-exchange receipts. They share some intent but use entirely different taxonomies — you may need all three for one business.
-          </div>
+          <button class="faq-q">How is this different from a HS Code or SAC Code? <span class="faq-q-icon">+</span></button>
+          <div class="faq-a">HS Codes are for physical goods at customs. SAC Codes are for GST classification within India. Export Purpose Codes (the P-codes) are specifically for the RBI's balance-of-payments reporting on foreign-exchange receipts. They share some intent but use entirely different taxonomies — you may need all three for one business.</div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
+<!-- ════════════ RELATED TOOLS ════════════ -->
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">More free tools</span>
+      <h2>The rest of the cross-border toolkit.</h2>
+      <p>Everything we wished existed when we were building Decentro Global. All free, all hosted by us, all built for Indian businesses sending or receiving foreign currency.</p>
+    </div>
+
+    <div class="related-grid">
+      <a href="#" class="related-card">
+        <div class="related-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        </div>
+        <h4>IBAN Checker</h4>
+        <p>Validate any international bank account number and break it down into country, bank, and account.</p>
+      </a>
+      <a href="#" class="related-card current">
+        <span class="related-tag">You are here</span>
+        <div class="related-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </div>
+        <h4>Export Purpose Code Finder</h4>
+        <p>Drop your website URL, get the RBI code your AD bank needs for inward remittances.</p>
+      </a>
+      <a href="#" class="related-card">
+        <div class="related-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+        </div>
+        <h4>SWIFT / BIC Lookup</h4>
+        <p>Resolve any SWIFT / BIC code into a bank, branch, and country in milliseconds.</p>
+      </a>
+      <a href="#" class="related-card">
+        <div class="related-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        </div>
+        <h4>FX Rate Today</h4>
+        <p>Live mid-market USD / EUR / GBP / SGD / AED rates, plus what your bank is probably charging on top.</p>
+      </a>
+    </div>
+  </div>
+</section>
+
 <!-- ════════════ CTA ════════════ -->
-<section class="cta-section">
+<section class="section">
   <div class="container">
     <div class="cta-card">
-      <div class="section-label">Decentro Global</div>
+      <span class="eyebrow">Decentro Global</span>
       <h2>One platform for your cross-border receipts, FIRA, and compliance.</h2>
       <p>Once you know your code, the next question is: how do I actually receive USD, EUR, or GBP without losing 4% to FX spread and a week to reconciliation? That's where we come in.</p>
       <div class="cta-actions">
@@ -956,17 +1074,17 @@ h3 { font-size: clamp(20px, 2.2vw, 26px); }
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
-        <div class="nav-logo" style="display:inline-flex;">
+        <a href="/" class="nav-logo" style="display:inline-flex;">
           <span class="nav-logo-mark">D</span>
           <span class="nav-logo-text">decentro</span>
-        </div>
+        </a>
         <p>Full-stack banking and cross-border infrastructure APIs. We help fast-moving teams ship financial features that would otherwise take quarters.</p>
       </div>
       <div class="footer-col">
-        <h4>Tools</h4>
+        <h4>Free tools</h4>
         <a href="#">IBAN Checker</a>
-        <a href="#">SWIFT / BIC Lookup</a>
         <a href="#">Export Purpose Code</a>
+        <a href="#">SWIFT / BIC Lookup</a>
         <a href="#">FX Rate Today</a>
       </div>
       <div class="footer-col">
@@ -997,13 +1115,36 @@ h3 { font-size: clamp(20px, 2.2vw, 26px); }
 
 <script>
 /* ── Mock classifier — keyed off the URL the user pastes ── */
+const MAJOR_GROUPS = {
+  '08': 'Computer & IT services',
+  '09': 'Personal, cultural & recreational',
+  '10': 'Other business services',
+  '01': 'Goods — Agriculture & textiles',
+  '03': 'Goods — Electronics',
+  '04': 'Goods — Handicrafts'
+};
+
+const SUB_LABELS = {
+  'P0801': '01 — Hardware consultancy',
+  'P0802': '02 — Software development',
+  'P0805': '05 — Business & management consultancy',
+  'P0807': '07 — Other IT services',
+  'P0808': '08 — IT-enabled services (BPO/KPO)',
+  'P0907': '07 — Advertising, market research',
+  'P0908': '08 — Audio-visual services',
+  'P0910': '10 — Other personal services',
+  'P1006': '06 — SaaS / Cloud computing',
+  'P1007': '07 — Financial services',
+  'P1099': '99 — Other business services'
+};
+
 const CLASSIFICATIONS = {
   'razorpay.com': {
     code: 'P1006',
     name: 'Software-as-a-Service (SaaS) — Cloud computing services',
     category: 'Category: Information & technology-enabled services',
     confidence: 94,
-    why: "Your homepage describes a recurring-revenue cloud platform sold to businesses. Under RBI's FED Master Direction, cross-border receipts for software accessed remotely fall under <strong>P1006 — SaaS</strong>, not <strong>P0801</strong> (custom software development) or <strong>P0807</strong> (other IT services).",
+    why: "Your homepage describes a recurring-revenue cloud platform sold to businesses. Under RBI's FED Master Direction, receipts for software accessed remotely fall under <strong>P1006 — SaaS</strong>, not <strong>P0801</strong> (custom development) or <strong>P0807</strong> (other IT services).",
     evidence: '"All-in-one payments platform. Monthly subscription. APIs, dashboards, and reconciliation tools delivered as a cloud service." — from /pricing and /products.',
     alternates: [
       { code: 'P0807', name: 'Other IT services — Use if a deal includes one-off integration / implementation work', score: 62 },
@@ -1039,7 +1180,7 @@ const CLASSIFICATIONS = {
     name: 'Other personal, cultural & recreational services',
     category: 'Category: Personal & recreational services',
     confidence: 71,
-    why: "Marketplace for in-person services (beauty, repairs, cleaning). Cross-border receipts here are unusual but if a portion of platform commission is billed to an overseas entity, <strong>P1099</strong> is the safest bucket. If the receipt is purely for software licence, switch to <strong>P1006</strong>.",
+    why: "Marketplace for in-person services (beauty, repairs, cleaning). Cross-border receipts here are unusual but if a portion of platform commission is billed to an overseas entity, <strong>P1099</strong> is the safest bucket. If the receipt is purely for a software licence, switch to <strong>P1006</strong>.",
     evidence: '"At-home services. Verified professionals. Beauty, cleaning, appliance repair, massage." — from homepage and category pages.',
     alternates: [
       { code: 'P1006', name: 'SaaS — If you licence your dispatch platform to overseas operators', score: 48 },
@@ -1048,7 +1189,6 @@ const CLASSIFICATIONS = {
   }
 };
 
-/* Generic fallback when the URL isn't in our demo set */
 function genericClassification(url) {
   const host = url.replace(/^https?:\/\//, '').replace(/\/.*$/, '').replace(/^www\./, '');
   return {
@@ -1076,18 +1216,24 @@ const loadingSub = document.getElementById('loadingSub');
 const step2 = document.getElementById('step2');
 const step3 = document.getElementById('step3');
 
+function updateAnatomy(code) {
+  const major = code.substring(1, 3);
+  const sub = code.substring(3);
+  document.getElementById('anaP').textContent = 'P';
+  document.getElementById('anaMajor').textContent = major;
+  document.getElementById('anaSub').textContent = sub;
+  document.getElementById('anaMajorDesc').textContent = `${major} — ${MAJOR_GROUPS[major] || 'Service group'}`;
+  document.getElementById('anaSubDesc').textContent = SUB_LABELS[code] || `${sub} — Sub-category`;
+}
+
 function runFinder(rawUrl) {
-  if (!rawUrl || !rawUrl.trim()) {
-    urlInput.focus();
-    return;
-  }
+  if (!rawUrl || !rawUrl.trim()) { urlInput.focus(); return; }
   let url = rawUrl.trim();
   if (!/^https?:\/\//i.test(url)) url = 'https://' + url;
   const host = url.replace(/^https?:\/\//, '').replace(/\/.*$/, '').replace(/^www\./, '');
   const matchKey = Object.keys(CLASSIFICATIONS).find(k => host.includes(k));
   const result = matchKey ? CLASSIFICATIONS[matchKey] : genericClassification(url);
 
-  // Show loading
   resultPanel.classList.add('visible');
   resultLoading.style.display = 'flex';
   resultContent.classList.remove('visible');
@@ -1096,12 +1242,8 @@ function runFinder(rawUrl) {
   step2.className = 'step active';
   step3.className = 'step';
 
-  // Scroll into view after a beat
-  setTimeout(() => {
-    resultPanel.scrollIntoView({ behavior: 'smooth', block: 'center' });
-  }, 100);
+  setTimeout(() => { resultPanel.scrollIntoView({ behavior: 'smooth', block: 'center' }); }, 80);
 
-  // Stage 2
   setTimeout(() => {
     loadingStrong.textContent = `Classifying what ${host} sells…`;
     loadingSub.textContent = 'Mapping signals against the RBI FED Master Direction Annexure';
@@ -1109,7 +1251,6 @@ function runFinder(rawUrl) {
     step3.className = 'step active';
   }, 1100);
 
-  // Reveal result
   setTimeout(() => {
     resultLoading.style.display = 'none';
     document.getElementById('resultUrl').textContent = host;
@@ -1120,6 +1261,7 @@ function runFinder(rawUrl) {
     document.getElementById('confidenceFill').style.width = result.confidence + '%';
     document.getElementById('resultWhy').innerHTML = result.why;
     document.getElementById('resultEvidence').textContent = result.evidence;
+    updateAnatomy(result.code);
     const altWrap = document.getElementById('resultAlternates');
     altWrap.innerHTML = result.alternates.map(a => `
       <div class="result-alt">
@@ -1141,20 +1283,27 @@ document.querySelectorAll('.tool-suggest-pill').forEach(pill => {
   });
 });
 
-/* ── Tool mode toggle (visual only — describe mode just changes placeholder) ── */
 document.querySelectorAll('.tool-mode-btn').forEach(btn => {
   btn.addEventListener('click', () => {
     document.querySelectorAll('.tool-mode-btn').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
-    if (btn.dataset.mode === 'describe') {
-      urlInput.placeholder = 'e.g. "I sell a CRM to dentists in the US and UK"';
-    } else {
-      urlInput.placeholder = 'https://yourcompany.com';
-    }
+    urlInput.placeholder = btn.dataset.mode === 'describe'
+      ? 'e.g. "I sell a CRM to dentists in the US and UK"'
+      : 'https://yourcompany.com';
   });
 });
 
-/* ── Codes table data ── */
+/* Copy button (visual confirmation only) */
+document.getElementById('copyBtn').addEventListener('click', e => {
+  const btn = e.currentTarget;
+  const code = document.getElementById('resultCode').textContent;
+  navigator.clipboard?.writeText(code);
+  const orig = btn.innerHTML;
+  btn.innerHTML = '✓ Copied';
+  setTimeout(() => { btn.innerHTML = orig; }, 1400);
+});
+
+/* ── Codes table ── */
 const CODES_DATA = {
   software: [
     { code: 'P1006', name: 'SaaS / Cloud services', desc: 'Software accessed over the internet on subscription', typical: 'Razorpay-style API platforms, vertical SaaS' },
@@ -1183,7 +1332,6 @@ const CODES_DATA = {
     { code: 'P0401', name: 'Handicrafts & gifts', desc: 'Artisanal, handmade goods', typical: 'Etsy-style sellers, GI products' }
   ]
 };
-
 function renderCodesTable(tab) {
   const rows = CODES_DATA[tab] || [];
   document.getElementById('codesTbody').innerHTML = rows.map(r => `
@@ -1196,7 +1344,6 @@ function renderCodesTable(tab) {
   `).join('');
 }
 renderCodesTable('software');
-
 document.querySelectorAll('.codes-tab').forEach(tab => {
   tab.addEventListener('click', () => {
     document.querySelectorAll('.codes-tab').forEach(t => t.classList.remove('active'));
@@ -1207,21 +1354,7 @@ document.querySelectorAll('.codes-tab').forEach(tab => {
 
 /* ── FAQ ── */
 document.querySelectorAll('.faq-q').forEach(q => {
-  q.addEventListener('click', () => {
-    q.parentElement.classList.toggle('open');
-  });
-});
-
-/* ── Reveal on scroll ── */
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-}, { threshold: 0.12 });
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-/* ── Nav scroll shadow ── */
-const nav = document.querySelector('.nav');
-window.addEventListener('scroll', () => {
-  if (window.scrollY > 4) nav.classList.add('scrolled'); else nav.classList.remove('scrolled');
+  q.addEventListener('click', () => q.parentElement.classList.toggle('open'));
 });
 </script>
 
